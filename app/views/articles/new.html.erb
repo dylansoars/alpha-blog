@@ -1,4 +1,13 @@
 <h1>Create an Article</h1>
+<% if @article.errors.any? %>
+<h2>You must fix following errors in order to continue</h2>
+<ul>
+  <% @article.errors.full_messages.each do |msg| %>
+<li><%= msg %></li>
+<% end %>
+</ul>
+<% end %>
+
 
 <%= form_for @article do |f| %>
 
@@ -12,7 +21,7 @@
     <%= f.text_area :description %>
  </p>
 
-<p> 
+<p>
    <%= f.submit %>
 </p>
 
